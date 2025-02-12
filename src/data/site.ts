@@ -12,24 +12,21 @@ export const home = {
     "Empowering businesses with cutting-edge AI solutions. From YC startup applications to enterprise AI transformation, we deliver scalable, innovative solutions that drive real business value.",
   stats: [
     {
-      value: "95%",
+      value: "100%",
       label: "Client Satisfaction",
     },
     {
-      value: "30+",
-      label: "YC Applications",
+      value: "5+",
+      label: "MVP Applications Delivered",
     },
     {
-      value: "40+",
+      value: "20+",
       label: "AI Agents Deployed",
     },
     {
-      value: "3x",
-      label: "Average ROI",
+      value: "3+",
+      label: "Ongoing Projects",
     },
-    {
-      value: "100+",
-      label: "Happy Clients",
-    },
+
   ],
 };
