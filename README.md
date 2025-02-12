@@ -27,7 +27,7 @@ Ultimate Astro is a cutting-edge template that seamlessly integrates multiple fr
 1. **Clone and Install**
 
    ```bash
-    git clone https://github.com/Marve10s/UltimateAstroTemplate.git
+    git clone https://github.com/mhhnr/UltimateAstroTemplate.git
    ```
 
    ```bash
@@ -125,7 +125,7 @@ Modify `tailwind.config.cjs` to customize:
 
 Have you modified my template? I'd love to see it! Share your creation with me:
 
-- Create a [GitHub issue](https://github.com/Marve10s/UltimateAstroTemplate/issues) with screenshots and demo link
+- Create a [GitHub issue](https://github.com/mhhnr/UltimateAstroTemplate/issues) with screenshots and demo link
 - Message me on [Telegram](https://t.me/TheCr1nge) with your project details
 
 All theme contributions will be reviewed and credited appropriately.

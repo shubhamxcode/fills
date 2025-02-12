@@ -27,5 +27,9 @@ export const home = {
       value: "3x",
       label: "Average ROI",
     },
+    {
+      value: "100+",
+      label: "Happy Clients",
+    },
   ],
 };
