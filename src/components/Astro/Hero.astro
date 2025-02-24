@@ -10,7 +10,7 @@ import { Icon } from 'astro-icon/components'
       <div class="text-center pb-12 md:pb-16">
         <!-- Mobile View (Hidden on larger screens) -->
         <div 
-          class="md:hidden mb-8" 
+          class="md:hidden text-4xl sm:text-5xl mb-8" 
           data-aos="zoom-y-out"
         >
           <h1 
@@ -363,7 +363,8 @@ import { Icon } from 'astro-icon/components'
 
     @media (max-width: 640px) {
         .handwriting {
-            display: none;
+            max-width: 100%;
+            height: auto;
         }
         
         .text-path-mobile {

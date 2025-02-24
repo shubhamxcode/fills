@@ -1,8 +1,8 @@
+<!--
 <template>
   <section class="min-h-[80vh] flex items-center justify-center text-white px-8 py-12 mt-24">
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Left Column -->
         <div class="text-left space-y-6">
           <Transition
             appear
@@ -89,7 +89,6 @@
           
         </div>
 
-        <!-- Right Column - Interactive Demo -->
         <div class="relative">
           <Transition
             appear
@@ -98,7 +97,6 @@
             enter-to-class="opacity-100 translate-x-0"
           >
             <div class="relative">
-              <!-- Demo Container -->
               <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700/50 shadow-xl">
                 <div class="absolute ">
                   <div class="flex gap-2">
@@ -108,7 +106,6 @@
                   </div>
                 </div>
 
-                <!-- Dynamic Demo Content -->
                 <Transition
                   mode="out-in"
                   enter-active-class="transition duration-300"
@@ -119,7 +116,6 @@
                   leave-to-class="opacity-0 -translate-y-4"
                 >
                   <div :key="activeDemo" class="pt-4 mt-2">
-                    <!-- Counter Demo -->
                     <div v-if="activeDemo === 1" class="space-y-4">
                       <h3 class="text-xl font-semibold text-emerald-400">Reactive Counter</h3>
                       <div class="flex items-center gap-4">
@@ -136,7 +132,6 @@
                       <p class="text-gray-400">Computed double: {{ doubled }}</p>
                     </div>
 
-                    <!-- Color Demo -->
                     <div v-if="activeDemo === 2" class="space-y-4">
                       <h3 class="text-xl font-semibold text-emerald-400">Color Mixer</h3>
                       <div class="space-y-2">
@@ -155,7 +150,6 @@
                       </div>
                     </div>
 
-                    <!-- List Demo -->
                     <div v-if="activeDemo === 3" class="space-y-4">
                       <h3 class="text-xl font-semibold text-emerald-400">Task Manager</h3>
                       <div class="space-y-2">
@@ -179,7 +173,6 @@
                 </div>
               </div>
 
-              <!-- Decorative Elements -->
               <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-full blur-xl"></div>
               <div class="absolute -top-4 -left-4 w-32 h-32 bg-gradient-to-br from-teal-500/20 to-emerald-500/20 rounded-full blur-xl"></div>
             </div>
@@ -188,8 +181,7 @@
       </div>
     </div>
   </section>
-</template>
-
+</template> -->
 <script setup>
 import { ref, computed } from 'vue';
 

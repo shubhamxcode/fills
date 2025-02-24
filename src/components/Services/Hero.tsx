@@ -127,7 +127,7 @@ import ColorPicker from '../components/ColorPicker';
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              React + Astro
+              Fills AI Consultancy
             </motion.h1>
           </LazyMotion>
           <LazyMotion features={domAnimation}>
@@ -137,7 +137,7 @@ import ColorPicker from '../components/ColorPicker';
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              Build dynamic, interactive components with the power of React in your Astro pages.
+              Transforming businesses with cutting-edge AI solutions and expert consultancy services.
             </motion.p>
           </LazyMotion>
           <LazyMotion features={domAnimation}>

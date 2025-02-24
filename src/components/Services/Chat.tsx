@@ -11,22 +11,22 @@ const InteractiveShowcase: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      content: "Hi",
+      content: "Welcome to Fills AI Consultancy! How can I assist you today?",
       sender: "assistant"
     },
     {
       id: 2,
-      content: "Hey, who are you?",
+      content: "Hi! I'd like to know more about your AI services.",
       sender: "user"
     },
     {
       id: 3,
-      content: "AI version of developer Ibrahim Elkamali",
+      content: "We specialize in custom AI solutions including Valmiki AI, Medical Form Filling, GAP Shopping Assistant, Pet Smart AI, and Williamson Sonoma AI Assistant. Which area interests you?",
       sender: "assistant"
     },
     {
       id: 4,
-      content: "Sick,let's chat, I'm starting",
+      content: "That's impressive! Let me explore your services.",
       sender: "user"
     }
   ]);
@@ -75,7 +75,7 @@ const InteractiveShowcase: React.FC = () => {
       setTimeout(() => {
         const assistantMessage: Message = {
           id: messages.length + 2,
-          content: "Ha, I think I'm too lazy to implement AI chat bot but if you want to chat - take a look on GitHub.",
+          content: "Thanks for your interest! Please visit our projects page to see detailed case studies of our AI solutions, or contact us directly for a consultation.",
           sender: 'assistant'
         };
         setMessages(prev => [...prev, assistantMessage]);
@@ -94,14 +94,14 @@ const InteractiveShowcase: React.FC = () => {
               <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
                 <img
                   className="aspect-square h-full w-full"
-                  alt="Ibrahim Elkamali"
+                  alt="Nithin Manupati"
                   src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23a855f7'/%3E%3Ctext x='50' y='50' font-family='Arial' font-size='40' fill='white' text-anchor='middle' dominant-baseline='middle'%3EI%3C/text%3E%3C/svg%3E"
                 />
               </span>
             </div>
             <div className="flex flex-col gap-0.5">
-              <h3 className="font-semibold text-gray-100">Ibrahim Elkamali</h3>
-              <p className="text-xs text-gray-400">@astroisthebest</p>
+              <h3 className="font-semibold text-gray-100">Nithin Manupati</h3>
+              <p className="text-xs text-gray-400">@mhhnr.com</p>
             </div>
           </div>
         </div>
