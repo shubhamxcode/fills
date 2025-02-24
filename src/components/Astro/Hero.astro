@@ -13,8 +13,31 @@ import { Icon } from 'astro-icon/components'
           class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8" 
           data-aos="zoom-y-out"
         >
-          <svg class="handwriting mx-auto" viewBox="0 0 600 200">
-            <text text-anchor="middle" x="300" y="150" class="text-path">Fills Ai</text>
+          <svg 
+            class="handwriting mx-auto w-full max-w-[600px]" 
+            viewBox="0 0 600 200" 
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <defs>
+              <style>
+                @font-face {
+                  font-family: 'HandwritingFont';
+                  src: url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+                }
+              </style>
+            </defs>
+            <text 
+              text-anchor="middle" 
+              x="50%" 
+              y="50%" 
+              class="text-path"
+              dominant-baseline="middle"
+              font-family="Caveat, cursive"
+              font-size="120px"
+              font-weight="700"
+            >
+              Fills Ai
+            </text>
           </svg>
         </div>
 
@@ -130,25 +153,38 @@ import { Icon } from 'astro-icon/components'
     }
 
     .handwriting {
-        width: 100%;
-        height: auto;
-        max-width: 800px;
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
     }
 
     .text-path {
-        font-family: 'Dancing Script', cursive;
-        font-size: 120px;
-        fill: none;
-        stroke: url(#gradient);
-        stroke-width: 2;
-        stroke-dasharray: 900;
-        stroke-dashoffset: 900;
-        animation: write 3s ease forwards;
+        fill: transparent;
+        stroke: white;
+        stroke-width: 1px;
+        animation: fillText 2s ease forwards;
     }
 
-    @keyframes write {
+    @keyframes fillText {
+        from {
+            fill: transparent;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
         to {
+            fill: white;
+            stroke-dasharray: 1000;
             stroke-dashoffset: 0;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .text-path {
+            font-size: 80px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .text-path {
+            font-size: 60px;
         }
     }
 
