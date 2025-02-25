@@ -12,7 +12,7 @@ const isActivePath = (path: string) => {
 };
 
 const GITHUB_USER = 'mhhnr';
-const REPO_NAME = 'UltimateAstroTemplate';
+const REPO_NAME = 'FillsApp';
 
 const stars = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}`)
     .then(res => res.ok ? res.json() : Promise.reject('Failed to fetch'))

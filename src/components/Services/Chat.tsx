@@ -80,12 +80,11 @@ const InteractiveShowcase: React.FC = () => {
     }
 
     if (chatContainerRef.current) {
-      const { scrollHeight, clientHeight, scrollTop } = chatContainerRef.current;
-      const isScrolledToBottom = scrollHeight - clientHeight <= scrollTop + 100;
-      
-      if (isScrolledToBottom) {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-      }
+      const { scrollHeight, clientHeight } = chatContainerRef.current;
+      chatContainerRef.current.scrollTo({
+        top: scrollHeight - clientHeight,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -96,6 +95,9 @@ const InteractiveShowcase: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
+
+    // Prevent default form submission behavior
+    e.preventDefault();
 
     // Add user message
     const userMessage: Message = {
@@ -118,6 +120,9 @@ const InteractiveShowcase: React.FC = () => {
         sender: 'assistant'
       };
       setMessages(prev => [...prev, assistantMessage]);
+      
+      // Scroll to bottom after message is added
+      setTimeout(scrollToBottom, 100);
     } catch (error) {
       console.error('Error getting AI response:', error);
       // Add error message
@@ -155,7 +160,7 @@ const InteractiveShowcase: React.FC = () => {
 
   return (
     <div id="chat-section" className="w-full bg-gradient-to-br p-4 md:p-8">
-      <div className="w-full max-w-2xl mx-auto backdrop-blur-xl bg-gray-900/70 rounded-2xl shadow-xl border border-white/10">
+      <div className="w-full max-w-2xl mx-auto backdrop-blur-xl bg-gray-900/70 rounded-2xl shadow-xl border border-white/10 overflow-hidden">
         {/* Header */}
         <div className="flex items-center p-4 border-b border-gray-700/30 bg-gray-800/40 rounded-t-2xl backdrop-blur-lg">
           <div className="flex items-center gap-3">
@@ -169,14 +174,18 @@ const InteractiveShowcase: React.FC = () => {
               </span>
             </div>
             <div className="flex flex-col gap-0.5">
-              <h3 className="font-semibold text-gray-100">Nithin Manupati</h3>
-              <p className="text-xs text-gray-400">@mhhnr.com</p>
+              <h3 className="font-semibold text-gray-100">Fill's Services</h3>
+              <p className="text-xs text-gray-400">@nithin</p>
             </div>
           </div>
         </div>
         
-        {/* Messages */}
-        <div ref={chatContainerRef} className="p-4 h-[400px] overflow-auto bg-gradient-to-b from-transparent to-black/5 scroll-smooth">
+        {/* Messages container with fixed height */}
+        <div 
+          ref={chatContainerRef} 
+          className="p-4 h-[400px] overflow-y-auto bg-gradient-to-b from-transparent to-black/5 scroll-smooth"
+          style={{ scrollbarWidth: 'thin', scrollbarColor: '#4B5563 transparent' }}
+        >
           <div className="space-y-4">
             <AnimatePresence>
               {messages.map((message) => (
@@ -204,9 +213,12 @@ const InteractiveShowcase: React.FC = () => {
           </div>
         </div>
 
-        {/* Input */}
-        <div className="p-4 border-t border-gray-700/30 bg-gray-800/40 rounded-b-2xl backdrop-blur-lg">
-          <form onSubmit={handleSubmit} className="flex items-center gap-2">
+        {/* Form with prevent default */}
+        <div className="p-4 border-t border-gray-700/30 bg-gray-800/40 backdrop-blur-lg">
+          <form 
+            onSubmit={handleSubmit} 
+            className="flex items-center gap-2"
+          >
             <input
               className="flex h-10 w-full rounded-xl border border-gray-700/50 bg-gray-900/50 backdrop-blur-sm px-3 py-2 text-sm text-gray-100 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/40 disabled:cursor-not-allowed disabled:opacity-50 flex-1"
               placeholder="Type your message..."
