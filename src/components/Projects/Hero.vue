@@ -1,4 +1,3 @@
-<!--
 <template>
   <section class="min-h-[80vh] flex items-center justify-center text-white px-8 py-12 mt-24">
     <div class="max-w-7xl mx-auto">
@@ -11,8 +10,8 @@
             enter-to-class="opacity-100 translate-x-0"
           >
             <h1 class="text-5xl md:text-6xl font-bold bg-gradient-to-br from-teal-300 via-emerald-400 to-cyan-400 bg-clip-text text-transparent leading-tight">
-              Vue + Astro:<br/>
-              <span class="text-4xl md:text-5xl">Where Innovation Meets Speed</span>
+              Fills AI Projects:<br/>
+              <span class="text-4xl md:text-5xl">Innovative Solutions</span>
             </h1>
           </Transition>
 
@@ -23,7 +22,7 @@
             enter-to-class="opacity-100 translate-x-0"
           >
             <p class="text-xl text-gray-300 leading-relaxed">
-              Experience the perfect blend of Vue's reactivity and Astro's performance. Build faster, smoother, and more engaging web applications.
+              Explore our cutting-edge AI solutions that are transforming businesses across industries.
             </p>
           </Transition>
 
@@ -38,13 +37,13 @@
                 @click="() => activeDemo = (activeDemo % 3) + 1"
                 class="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-0.5"
               >
-                Try Demo {{ activeDemo }}
+                View Demo {{ activeDemo }}
               </button>
               <button
                 @click="scrollToFeatures"
                 class="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-400 to-emerald-500 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 hover:-translate-y-0.5 group"
               >
-                View Features
+                View Projects
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   width="20" 
@@ -73,20 +72,18 @@
             <div class="flex flex-wrap gap-6 mt-6">
               <div class="flex items-center gap-3 text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path><line x1="16" y1="8" x2="2" y2="22"></line><line x1="17.5" y1="15" x2="9" y2="15"></line></svg>
-                <span>Composable</span>
+                <span>AI-Powered</span>
               </div>
               <div class="flex items-center gap-3 text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-                <span>Reactive</span>
+                <span>Innovative</span>
               </div>
               <div class="flex items-center gap-3 text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-400"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313-12.454z"></path></svg>
-                <span>Developer Friendly</span>
+                <span>User-Friendly</span>
               </div>
             </div>
           </Transition>
-
-          
         </div>
 
         <div class="relative">
@@ -181,7 +178,8 @@
       </div>
     </div>
   </section>
-</template> -->
+</template>
+
 <script setup>
 import { ref, computed } from 'vue';
 
@@ -191,9 +189,9 @@ const count = ref(0);
 const doubled = computed(() => count.value * 2);
 const hue = ref(180);
 const tasks = ref([
-  { text: 'Learn Vue', done: true },
-  { text: 'Master Astro', done: false },
-  { text: 'Build awesome apps', done: false }
+  { text: 'Valmiki AI', done: true },
+  { text: 'Medical Form Filling', done: false },
+  { text: 'GAP Shopping Assistant', done: false }
 ]);
 
 const scrollToFeatures = () => {
