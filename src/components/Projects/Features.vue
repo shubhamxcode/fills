@@ -9,9 +9,11 @@
       >
         <div class="text-center mb-8 sm:mb-16">
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
-            Experience The Power
+            Our Solutions Portfolio
           </h2>
-          <p class="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-400">Cutting-edge features that set us apart</p>
+          <p class="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-400">
+            Innovative AI solutions across multiple industries
+          </p>
         </div>
       </Transition>
 
@@ -294,8 +296,8 @@ const LiveDemo = {
 // Feature definitions (reduced to 3)
 const features = [
   {
-    title: "Smart Type System",
-    description: "Experience the power of Vue's intelligent type system with real-time feedback and suggestions.",
+    title: "Healthcare Solutions",
+    description: "Advanced AI scribes and medical assistants streamlining healthcare documentation and improving patient care.",
     icon: {
       template: `
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -306,8 +308,8 @@ const features = [
     interactive: TypeWriter
   },
   {
-    title: "Dynamic Theming",
-    description: "Switch between beautiful pre-built themes or create your own with our powerful theming system.",
+    title: "Retail Innovation",
+    description: "Smart shopping assistants for major retailers like Gap, Petsmart, and Williams-Sonoma, enhancing customer experience.",
     icon: {
       template: `
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -318,8 +320,8 @@ const features = [
     interactive: ThemeSwitcher
   },
   {
-    title: "Dynamic Experiences",
-    description: "Build fluid and responsive interfaces with Vue's reactive system and smooth transitions.",
+    title: "Cultural Preservation",
+    description: "Innovative platforms like Valmiki AI preserving cultural heritage through modern technology.",
     icon: {
       template: `
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
