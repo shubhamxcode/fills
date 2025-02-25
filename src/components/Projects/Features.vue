@@ -136,10 +136,10 @@ const handleMouseLeave = (index) => {
 const TypeWriter = {
   setup() {
     const phrases = [
-      'Vue.js',
-      'Components',
-      'Reactivity',
-      'Performance'
+      'Optimization',
+      'Efficiency',
+      'Quality',
+      'Automation'
     ];
     const currentText = ref('');
     const phraseIndex = ref(0);
@@ -293,7 +293,544 @@ const LiveDemo = {
   }
 };
 
-// Feature definitions
+// Create separate TypeWriter components for each project
+const ProteinTypeWriter = {
+  setup() {
+    const phrases = [
+      'Optimization',
+      'Efficiency',
+      'Quality',
+      'Automation'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+const GranthTypeWriter = {
+  setup() {
+    const phrases = [
+      'Knowledge',
+      'Heritage',
+      'Archive',
+      'Digital'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+const DutaTypeWriter = {
+  setup() {
+    const phrases = [
+      'Dialogue',
+      'Learning',
+      'Guidance',
+      'Support'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+const DhvaniTypeWriter = {
+  setup() {
+    const phrases = [
+      'Narration',
+      'Interactive',
+      'Voice-Based',
+      'Learning'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+const MedicalTypeWriter = {
+  setup() {
+    const phrases = [
+      'Documentation',
+      'Accuracy',
+      'Integration',
+      'Healthcare'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+const GapTypeWriter = {
+  setup() {
+    const phrases = [
+      'Fashion',
+      'Style',
+      'Shopping',
+      'Personal'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+const PetsmartTypeWriter = {
+  setup() {
+    const phrases = [
+      'Care',
+      'Products',
+      'Services',
+      'Support'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+const WilliamsSonomaTypeWriter = {
+  setup() {
+    const phrases = [
+      'Culinary',
+      'Kitchen',
+      'Recipes',
+      'Cooking'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
+// Update the features array to use specific TypeWriter components
 const features = [
   {
     title: "Protein Production AI",
@@ -305,7 +842,7 @@ const features = [
         </svg>
       `
     },
-    interactive: TypeWriter
+    interactive: ProteinTypeWriter
   },
   {
     title: "Valmiki AI: Granthālayah",
@@ -317,7 +854,7 @@ const features = [
         </svg>
       `
     },
-    interactive: ThemeSwitcher
+    interactive: GranthTypeWriter
   },
   {
     title: "Valmiki AI: Duta",
@@ -329,7 +866,7 @@ const features = [
         </svg>
       `
     },
-    interactive: LiveDemo
+    interactive: DutaTypeWriter
   },
   {
     title: "Valmiki AI: Dhvani",
@@ -341,7 +878,7 @@ const features = [
         </svg>
       `
     },
-    interactive: TypeWriter
+    interactive: DhvaniTypeWriter
   },
   {
     title: "Medical AI Assistant",
@@ -353,7 +890,7 @@ const features = [
         </svg>
       `
     },
-    interactive: ThemeSwitcher
+    interactive: MedicalTypeWriter
   },
   {
     title: "Gap Shopping Assistant",
@@ -365,7 +902,7 @@ const features = [
         </svg>
       `
     },
-    interactive: LiveDemo
+    interactive: GapTypeWriter
   },
   {
     title: "Petsmart AI Assistant",
@@ -377,7 +914,7 @@ const features = [
         </svg>
       `
     },
-    interactive: TypeWriter
+    interactive: PetsmartTypeWriter
   },
   {
     title: "Williams-Sonoma AI Assistant",
@@ -390,7 +927,7 @@ const features = [
         </svg>
       `
     },
-    interactive: ThemeSwitcher
+    interactive: WilliamsSonomaTypeWriter
   }
 ];
 </script>
