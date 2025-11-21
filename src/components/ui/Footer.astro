@@ -99,12 +99,25 @@ const currentYear = new Date().getFullYear();
                     />
                 </a>
 
-                <!-- Copyright -->
+                <!-- Copyright and Legal Links -->
                 <div class="w-full sm:w-auto text-center sm:text-left text-xs sm:text-sm text-gray-400 font-medium px-2 sm:px-4 pt-2 sm:pt-0 border-t sm:border-t-0 sm:border-l border-gray-700">
-                    <span>{currentYear}</span>
-                    <span class="ml-1 font-cal bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
-                        Nithin Manupati
-                    </span>
+                    <div class="mb-1">
+                        <span>{currentYear}</span>
+                        <span class="ml-1 font-cal bg-gradient-to-r from-orange-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+                            Nithin Manupati
+                        </span>
+                    </div>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-2 text-xs">
+                        <a href="/terms-and-conditions" class="hover:text-purple-400 transition-colors">Terms</a>
+                        <span>•</span>
+                        <a href="/privacy-policy" class="hover:text-purple-400 transition-colors">Privacy</a>
+                        <span>•</span>
+                        <a href="/refund-policy" class="hover:text-purple-400 transition-colors">Refunds</a>
+                        <span>•</span>
+                        <a href="/return-policy" class="hover:text-purple-400 transition-colors">Returns</a>
+                        <span>•</span>
+                        <a href="/shipping-policy" class="hover:text-purple-400 transition-colors">Shipping</a>
+                    </div>
                 </div>
             </div>
         </div>

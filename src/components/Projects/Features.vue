@@ -112,7 +112,7 @@
 import { ref, computed, h, onMounted } from 'vue';
 
 // Mouse position for each card
-const mousePos = ref(Array(8).fill().map(() => ({ x: 0, y: 0, isHovered: false })));
+const mousePos = ref(Array(9).fill().map(() => ({ x: 0, y: 0, isHovered: false })));
 
 const handleMouseMove = (event, index) => {
   const card = event.currentTarget;
@@ -830,8 +830,87 @@ const WilliamsSonomaTypeWriter = {
   }
 };
 
+const Notes9TypeWriter = {
+  setup() {
+    const phrases = [
+      'Laboratory',
+      'Research',
+      'Inventory',
+      'Scientific'
+    ];
+    const currentText = ref('');
+    const phraseIndex = ref(0);
+    const charIndex = ref(0);
+    const isDeleting = ref(false);
+    const isPaused = ref(false);
+
+    const typeEffect = () => {
+      const currentPhrase = phrases[phraseIndex.value];
+      
+      if (!isDeleting.value) {
+        currentText.value = currentPhrase.substring(0, charIndex.value + 1);
+        charIndex.value++;
+        
+        if (charIndex.value === currentPhrase.length) {
+          isDeleting.value = true;
+          isPaused.value = true;
+          setTimeout(() => {
+            isPaused.value = false;
+          }, 1500);
+        }
+      } else {
+        if (!isPaused.value) {
+          currentText.value = currentPhrase.substring(0, charIndex.value - 1);
+          charIndex.value--;
+          
+          if (charIndex.value === 0) {
+            isDeleting.value = false;
+            phraseIndex.value = (phraseIndex.value + 1) % phrases.length;
+          }
+        }
+      }
+      
+      const speed = isDeleting.value ? 50 : 150;
+      if (!isPaused.value) {
+        setTimeout(typeEffect, speed);
+      } else {
+        setTimeout(typeEffect, 1500);
+      }
+    };
+
+    onMounted(() => {
+      typeEffect();
+    });
+
+    return () => h('div', { 
+      class: 'flex flex-col items-center gap-2' 
+    }, [
+      h('div', { 
+        class: 'text-2xl font-mono text-emerald-400 min-h-[2em] flex items-center' 
+      }, [
+        currentText.value,
+        h('span', { 
+          class: 'w-[2px] h-6 bg-emerald-400 ml-1 animate-pulse' 
+        })
+      ])
+    ]);
+  }
+};
+
 // Update the features array to use specific TypeWriter components
 const features = [
+  {
+    title: "Notes9 - LIMS",
+    description: "Comprehensive Laboratory Inventory Management System with project management, experiment tracking, sample inventory, equipment management, protocol library, and rich lab notes for scientific research teams.",
+    icon: {
+      template: `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+        </svg>
+      `
+    },
+    interactive: Notes9TypeWriter
+  },
   {
     title: "Protein Production AI",
     description: "AI-driven system that optimizes each step of protein production, from raw material processing to final output, enhancing yield and quality while reducing costs and waste.",
