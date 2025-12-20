@@ -2,6 +2,11 @@
  * PhonePe Payment Gateway Utility Functions
  * Based on official PhonePe PG Checkout API documentation
  * https://developer.phonepe.com/payment-gateway
+import jwt from 'jsonwebtoken';
+
+/**
+ * PhonePe Payment Gateway Utility Functions
+ * Based on official PhonePe API documentation
  */
 
 interface PhonePeConfig {
@@ -29,6 +34,9 @@ interface PaymentPayload {
 // Cache for OAuth token to avoid requesting new token for every API call
 let cachedToken: { token: string; expiresAt: number } | null = null;
 
+    message?: string;
+}
+
 /**
  * Get PhonePe configuration from environment variables
  */
@@ -40,6 +48,14 @@ export function getPhonePeConfig(): PhonePeConfig {
 
     if (!clientId || !clientSecret || !apiBaseUrl) {
         throw new Error('PhonePe configuration is missing. Required: PHONEPE_CLIENT_ID, PHONEPE_CLIENT_SECRET, PHONEPE_API_BASE_URL');
+    // In Astro server-side, we need to use process.env
+    const clientId = process.env.PHONEPE_CLIENT_ID || import.meta.env.PHONEPE_CLIENT_ID;
+    const clientSecret = process.env.PHONEPE_CLIENT_SECRET || import.meta.env.PHONEPE_CLIENT_SECRET;
+    const clientVersion = process.env.PHONEPE_CLIENT_VERSION || import.meta.env.PHONEPE_CLIENT_VERSION;
+    const apiBaseUrl = process.env.PHONEPE_API_BASE_URL || import.meta.env.PHONEPE_API_BASE_URL;
+
+    if (!clientId || !clientSecret || !clientVersion || !apiBaseUrl) {
+        throw new Error('PhonePe configuration is missing in environment variables');
     }
 
     return {
@@ -104,6 +120,24 @@ export async function getAccessToken(config: PhonePeConfig): Promise<string> {
 
     console.log('OAuth token obtained successfully');
     return tokenData.access_token;
+ * Generate JWT token for PhonePe API authentication
+ * Token format: O-Bearer <JWT>
+ */
+export function generateJWT(merchantId: string, clientSecret: string): string {
+    const expiresOn = Date.now() + 30 * 60 * 1000; // 30 minutes from now
+
+    const payload = {
+        expiresOn,
+        merchantId,
+    };
+
+    // Generate JWT token
+    const token = jwt.sign(payload, clientSecret, {
+        algorithm: 'HS256',
+        noTimestamp: true,
+    });
+
+    return token;
 }
 
 /**
@@ -112,11 +146,13 @@ export async function getAccessToken(config: PhonePeConfig): Promise<string> {
 export function generateMerchantOrderId(): string {
     const timestamp = Date.now();
     const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+    const random = Math.floor(Math.random() * 10000);
     return `ORDER_${timestamp}_${random}`;
 }
 
 /**
  * Create payment payload for PhonePe PG Checkout API
+ * Create payment payload for PhonePe API
  */
 export function createPaymentPayload(params: PaymentPayload) {
     return {
@@ -143,6 +179,21 @@ export function createPaymentPayload(params: PaymentPayload) {
  */
 export function validateAmount(amount: number): boolean {
     return typeof amount === 'number' && amount > 0;
+        paymentFlow: {
+            type: 'PG_CHECKOUT',
+            message: params.message || 'Payment for order',
+            merchantUrls: {
+                redirectUrl: params.redirectUrl,
+            },
+        },
+    };
+}
+
+/**
+ * Validate amount (must be positive integer in paise)
+ */
+export function validateAmount(amount: number): boolean {
+    return Number.isInteger(amount) && amount > 0;
 }
 
 /**

@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import {
     getPhonePeConfig,
     getAccessToken,
+    generateJWT,
     generateMerchantOrderId,
     createPaymentPayload,
     validateAmount,
@@ -31,6 +32,9 @@ export const POST: APIRoute = async ({ request }) => {
         const { amount, redirectUrl } = body;
         
         console.log('Request received:', { amount, redirectUrl });
+        console.log('Request body:', body);
+        const { amount, redirectUrl } = body;
+        console.log('Amount:', amount, 'Redirect URL:', redirectUrl);
 
         // Validate amount
         if (!amount || !validateAmount(amount)) {
@@ -82,11 +86,22 @@ export const POST: APIRoute = async ({ request }) => {
         console.log('Amount in paise:', amountInPaise);
 
         // Create payment payload as per PhonePe PG Checkout API
+        // Get PhonePe configuration
+        const config = getPhonePeConfig();
+
+        // Generate unique merchant order ID
+        const merchantOrderId = generateMerchantOrderId();
+
+        // Convert amount to paise (PhonePe expects amount in paise)
+        const amountInPaise = rupeesToPaise(amount);
+
+        // Create payment payload
         const paymentPayload = createPaymentPayload({
             merchantOrderId,
             amount: amountInPaise,
             redirectUrl,
             message: `Payment for FILLS AI - Order ${merchantOrderId}`,
+            message: `Payment for order ${merchantOrderId}`,
         });
 
         console.log('Payment payload:', JSON.stringify(paymentPayload, null, 2));
@@ -128,6 +143,26 @@ export const POST: APIRoute = async ({ request }) => {
         // PhonePe returns orderId and redirectUrl for successful responses (no 'success' field)
         // Error responses have 'errorCode' and 'message' fields
         if (!phonePeResponse.ok || responseData.errorCode) {
+        // Use Client Secret as Bearer token (PhonePe authentication)
+        const authToken = config.clientSecret;
+
+        // Call PhonePe API
+        const phonePeResponse = await fetch(
+            `${config.apiBaseUrl}/checkout/v2/pay`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${authToken}`,
+                },
+                body: JSON.stringify(paymentPayload),
+            }
+        );
+
+        const responseData = await phonePeResponse.json();
+
+        // Check if payment initiation was successful
+        if (!phonePeResponse.ok || !responseData.success) {
             console.error('PhonePe API Error:', responseData);
             return new Response(
                 JSON.stringify({
@@ -138,6 +173,11 @@ export const POST: APIRoute = async ({ request }) => {
                 }),
                 {
                     status: phonePeResponse.status || 400,
+                    error: responseData.message || 'Failed to initiate payment',
+                    details: responseData,
+                }),
+                {
+                    status: phonePeResponse.status,
                     headers: { 'Content-Type': 'application/json' },
                 }
             );
@@ -154,6 +194,9 @@ export const POST: APIRoute = async ({ request }) => {
 
         if (!checkoutUrl) {
             console.error('No checkout URL in response:', responseData);
+        const checkoutUrl = responseData.data?.instrumentResponse?.redirectInfo?.url;
+
+        if (!checkoutUrl) {
             return new Response(
                 JSON.stringify({
                     success: false,
