@@ -7,11 +7,13 @@ import svelte from "@astrojs/svelte";
 import vue from "@astrojs/vue";
 import solidJs from "@astrojs/solid-js";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://ultimate-astro-template.vercel.app/",
-  output: "static",
+  output: "server",
+  adapter: vercel({}),
   integrations: [
     tailwind({
       applyBaseStyles: true,
