@@ -1,6 +1,5 @@
 import type { APIRoute } from 'astro';
 import { getPhonePeConfig, getAccessToken, getPhonePeHeaders } from '../../../lib/phonepe-utils';
-import { getPhonePeConfig, generateJWT } from '../../../lib/phonepe-utils';
 
 // Mark this endpoint as server-rendered
 export const prerender = false;
@@ -11,7 +10,7 @@ export const prerender = false;
  */
 export const GET: APIRoute = async ({ url }) => {
     console.log('=== PhonePe Payment Status Check API Called ===');
-    
+
     try {
         const orderId = url.searchParams.get('orderId');
 
@@ -71,41 +70,7 @@ export const GET: APIRoute = async ({ url }) => {
         }
 
         console.log('PhonePe status parsed response:', JSON.stringify(responseData, null, 2));
-        // Get PhonePe configuration
-        const config = getPhonePeConfig();
-
-        // Generate JWT token for authentication
-        const jwtToken = generateJWT(config.clientId, config.clientSecret);
-
-        // Call PhonePe status check API
-        const phonePeResponse = await fetch(
-            `${config.apiBaseUrl}/checkout/v2/status/${config.clientId}/${orderId}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `O-Bearer ${jwtToken}`,
-                },
-            }
-        );
-
-        const responseData = await phonePeResponse.json();
-
-        if (!phonePeResponse.ok) {
-            return new Response(
-                JSON.stringify({
-                    success: false,
-                    error: 'Failed to fetch payment status',
-                    details: responseData,
-                }),
-                {
-                    status: phonePeResponse.status,
-                    headers: { 'Content-Type': 'application/json' },
-                }
-            );
-        }
-
-        // Return payment status
+        // Return success response with status data
         return new Response(
             JSON.stringify({
                 success: true,

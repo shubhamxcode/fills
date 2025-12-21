@@ -65,7 +65,7 @@
                 </div>
                 <div class="pt-4">
                   <h4 class="text-sm font-semibold text-gray-300 mb-3">Key Benefits</h4>
-                  <ul class="grid sm:grid-cols-2 gap-3">
+                  <ul class="grid sm:grid-cols-2 gap-3 mb-6">
                     <li class="flex items-center gap-2 text-sm text-gray-400">
                       <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                       Quick full implementation
@@ -75,6 +75,12 @@
                       Direct expert access
                     </li>
                   </ul>
+                  <a 
+                    href="/payment?amount=70000"
+                    class="block w-full text-center py-4 px-6 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl shadow-lg hover:shadow-orange-500/20 transition-all hover:-translate-y-0.5"
+                  >
+                    Pay with PhonePe
+                  </a>
                 </div>
               </div>
             </div>
@@ -97,7 +103,7 @@
                 </div>
                 <div class="pt-4">
                   <h4 class="text-sm font-semibold text-gray-300 mb-3">Key Benefits</h4>
-                  <ul class="grid sm:grid-cols-2 gap-3">
+                  <ul class="grid sm:grid-cols-2 gap-3 mb-6">
                     <li class="flex items-center gap-2 text-sm text-gray-400">
                       <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                       Comprehensive solutions
@@ -111,6 +117,12 @@
                       Dedicated support team
                     </li>
                   </ul>
+                  <a 
+                    href="/payment?amount=250000"
+                    class="block w-full text-center py-4 px-6 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/20 transition-all hover:-translate-y-0.5"
+                  >
+                    Pay with PhonePe
+                  </a>
                 </div>
               </div>
             </div>
