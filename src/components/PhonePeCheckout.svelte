@@ -35,6 +35,7 @@
         },
         body: JSON.stringify({
           amount: amount,
+          redirectUrl: `${baseUrl}/`,
           redirectUrl: `${baseUrl}/payment/status`,
         }),
       });
